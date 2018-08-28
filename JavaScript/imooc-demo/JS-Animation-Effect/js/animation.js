@@ -76,8 +76,8 @@ window.onload = function () {
 
 function animation(obj, json, fn) {
     clearInterval(obj.timer);
-    var flag = true;
     obj.timer = setInterval(function () {
+        var flag = true;
         for (var attr in json) {
             var icur = 0,
                 iTarget = json[attr],
@@ -109,7 +109,8 @@ function animation(obj, json, fn) {
                 }
             }
         }
-        if (flag) {
+        if (flag && !isFunction(fn)) {
+            console.log('1');
             clearInterval(obj.timer);
         }
     },15);
