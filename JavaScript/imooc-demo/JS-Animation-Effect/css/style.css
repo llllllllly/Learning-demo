@@ -42,3 +42,8 @@ div {
     border: 1px solid black;
     border-radius: 25px;
 }
+
+#chain {
+    opacity: 0.3;
+    border-radius: 50px;
+}
