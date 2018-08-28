@@ -110,7 +110,6 @@ function animation(obj, json, fn) {
             }
         }
         if (flag && !isFunction(fn)) {
-            console.log('1');
             clearInterval(obj.timer);
         }
     },15);
