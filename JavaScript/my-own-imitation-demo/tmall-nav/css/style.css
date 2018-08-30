@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    width: 200px;
+}
+
+.title {
+    background-color: #fc0f3d;
+    color: white;
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 15px;
+}
