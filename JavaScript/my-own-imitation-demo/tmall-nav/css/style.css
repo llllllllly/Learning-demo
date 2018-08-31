@@ -7,11 +7,51 @@
     width: 200px;
 }
 
+.tmall-icon {
+    content: url(../img/天猫形象1.png);
+    width: 50%;
+    padding-left: 25%;
+    margin-bottom: -35px;
+}
+
 .title {
     background-color: #fc0f3d;
     color: white;
-    display: block;
+    display: flex;
     height: 36px;
     line-height: 36px;
     padding-left: 15px;
+    align-items: center;
+}
+
+.title span {
+    margin-left: 6px;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+}
+
+.menu {
+    height: 500px;
+}
+
+.menu li {
+    padding-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    opacity: 0.55;
+    background: black;
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.menu li a{
+    color: #FFFFFF;
+    text-decoration: none;
 }
