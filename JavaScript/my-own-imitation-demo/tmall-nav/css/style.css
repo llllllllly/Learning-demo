@@ -69,6 +69,8 @@
     background-color: #F9F9F9;
     display: flex;
     border-top: 3px solid #fc0f3d;
+    padding-left: 1px;
+    visibility: hidden;
 }
 
 .left-contents {
