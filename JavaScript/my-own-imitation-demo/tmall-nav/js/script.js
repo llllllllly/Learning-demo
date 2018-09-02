@@ -17,23 +17,33 @@ var icons = [
     {'name':'医药保健', 'select':'副本', 'color':'#09f066'}, 
     {'name':'居家', 'select':'副本', 'color':'#ee3119'}, 
     {'name':'图书音像', 'select':'副本', 'color':'#09f066'}
-];
+],
+    hotLinks = [];
 
 function nav() {
     var title = document.querySelector('.title'),
         menu = document.querySelector('.menu'),
-        lis = menu.querySelectorAll('li');
+        lis = menu.querySelectorAll('li'),
+        detail = document.querySelector('.details'),
+        dl = detail.querySelector('dl'),
+        links = dl.querySelectorAll('a');
     // 添加图标
     addIcon(title, '分类')
     for(var i = 0, l = lis.length; i < l; i++) {
         addIcon(lis[i], icons[i].name);
         lis[i].i = i;
         lis[i].onmouseover = function () {
-            move(this, 'over');
+            setMoveCSS(this, 'over');
+            showDetails(this, 'over');
         }
         lis[i].onmouseout = function () {
-            move(this, 'out');
+            setMoveCSS(this, 'out');
+            showDetails(this, 'out');
         }
+    }
+    // 设置热门类型商品
+    for(var i = 0; i < 10; i++) {
+        hotLinks.push(Math.floor(Math.random() * links.length));
     }
 }
 
@@ -52,34 +62,45 @@ function addIcon(ele, img) {
     ele.insertAdjacentElement('afterbegin', icon);
 }
 
-/**
- *
- * @param {Element} ele
- * @param {String} state
- */
-function move(ele, state) {
+function setMoveCSS(ele, state) {
     var i = ele.querySelector('i'),
         links = ele.querySelectorAll('a'),
         icon = icons[ele.i];
-    if (state === 'over') {
-        i.style.content = 'url(img/' + icon.name + '的' + icon.select + '.png)';
-        ele.style.color = icon.color;
-        ele.style.opacity = 1;
-        ele.style.backgroundColor = '#FFFFFF';
-        ele.style.fontWeight = 350;
-        links.forEach(function (a) {
-            a.style.color = icon.color;
-            a.style.fontWeight = 350;
-        });
-    } else {
-        i.style.content = 'url(img/' + icon.name + '.png)';
-        ele.style.color = '#FFFFFF';
-        ele.style.opacity = 0.55;
-        ele.style.backgroundColor = '#000000';
-        ele.style.fontWeight = 300;
-        links.forEach(function (a) {
-            a.style.color = '#FFFFFF';
-            a.style.fontWeight = 300;
-        });
+    i.style.content = 'url(img/' + (state === 'over' ? icon.name + '的' + icon.select : icon.name) + '.png)';
+    ele.style.color = state === 'over' ? icon.color : '#FFFFFF';
+    ele.style.opacity = state === 'over' ? 1 : 0.55;
+    ele.style.backgroundColor = state === 'over' ? '#FFFFFF' : '#000000';
+    ele.style.fontWeight = state === 'over' ? 350 : 300;
+    links.forEach(function (a) {
+        a.style.color = state === 'over' ? icon.color : '#FFFFFF';
+        a.style.fontWeight = state === 'over' ? 350 : 300;
+    });
+}
+
+function showDetails(ele, state) {
+    var detail = document.querySelector('.details'),
+        color = icons[ele.i].color,
+        dl = detail.querySelector('dl'),
+        links = dl.querySelectorAll('a');
+    detail.style.visibility = state === 'over' ? 'visible' : 'hidden';
+    detail.onmouseover = function () {
+        setMoveCSS(ele, 'over');
+        this.style.visibility = 'visible';
+    }
+    detail.onmouseout = function () {
+        setMoveCSS(ele, 'out');
+        this.style.visibility = 'hidden';
+    }
+    for(var i = 0, l = hotLinks.length; i < l; i++) {
+        links[hotLinks[i]].style.color = color;
+        links[hotLinks[i]].hotColor = color;
+    }
+    for(var i = 0, l = links.length; i < l; i++) {
+        links[i].onmouseover = function () {
+            this.style.color = color;
+        }
+        links[i].onmouseout = function () {
+            this.style.color = this.hotColor ? this.hotColor : '#666666';
+        }
     }
 }
