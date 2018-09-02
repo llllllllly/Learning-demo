@@ -63,7 +63,7 @@
 }
 
 .details {
-    margin-top: 98px;
+    margin-top: 97px;
     height: 495px;
     width: 850px;
     background-color: #F9F9F9;
@@ -77,35 +77,94 @@
     padding: 15px 30px;
 }
 
-.left-contents dt {
-    font-weight: bold;
+.left-contents dl {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0;
+}
+
+.left-contents dl dt {
+    display: block;
+    float: left;
+    width: 90px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.left-contents dl dt span:first-child {
+    display: block;
+    float: left;
     width: 70px;
-    display: block;
-    float: left;
+    height: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    text-align: justify;
 }
 
-.left-contents span {
-    display: block;
-    float: left;
+.left-contents dl dt span:first-child::after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    height: 0;
 }
 
-.left-contents dd {
+.left-contents dl dt span:last-child {
     display: block;
-    float: left;
-    width: 495px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #CCCCCC;
+    float: right;
+    width: 10px;
+    font-weight: 300;
 }
 
-.left-contents dd a {
+.left-contents dl dd {
     display: block;
-    float: left;
-    padding-left: 10px;
+    overflow: hidden;
     padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e5e5e5;
+}
+
+.left-contents dl dd:last-child {
+    border: none;
+}
+
+.left-contents dl dd a {
+    display: block;
+    float: left;
     text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
     color: #666666;
+    font-weight: 300;
 }
 
 .right-brand {
     width: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 12px;
+}
+
+.brand img {
+    margin: auto 2px;
+    width: 93px;
+    height: 47px;
+}
+
+.big-brand img {
+    display: block;
+    width: 189px;
+    height: 87px;
+    margin-bottom: 8px;
 }
